@@ -1,0 +1,46 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - feature/cd
+
+env:
+  NEXT_PUBLIC_BASE_PATH: "/bluearchive_calc"
+  API_URL: ${{ secrets.API_URL }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.ref_slug == 'production' && 'production' || 'develop' }}
+    permissions:
+      id-token: write # IDトークンに対する権限を設定
+      contents: read # 必要に応じて他の権限も設定
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        # with:
+        #   token: ${{ secrets.ACTIONS_TOKEN }}
+      - name: setup aws credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: "ap-northeast-1" # リージョンを指定
+          role-to-assume: ${{ secrets.OIDC_ARN }} # 作成した IAM ロールの ARN
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: "src/package-lock.json"
+      - name: npm install
+        run: npm install
+        working-directory: src
+      - name: next.js build
+        run: npm run build
+        working-directory: src
+      - name: Invalidate CloudFront
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DIST_ID }} --paths "/*"
+      - name: Deploy to S3
+        run: aws s3 sync --delete out ${{ secrets.S3_BUCKET }}
+        working-directory: src
