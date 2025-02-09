@@ -14,7 +14,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.ref_slug == 'production' && 'production' || 'develop' }}
+      name: ${{ github.ref_name == 'production' && 'production' || 'develop' }}
     permissions:
       id-token: write # IDトークンに対する権限を設定
       contents: read # 必要に応じて他の権限も設定
