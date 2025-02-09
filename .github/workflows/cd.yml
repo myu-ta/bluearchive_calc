@@ -3,7 +3,8 @@ name: Deploy
 on:
   push:
     branches:
-      - feature/cd
+      - develop
+      - production
 
 env:
   NEXT_PUBLIC_BASE_PATH: "/bluearchive_calc"
