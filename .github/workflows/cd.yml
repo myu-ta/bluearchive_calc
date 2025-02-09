@@ -5,6 +5,8 @@ on:
     branches:
       - develop
       - production
+  repository_dispatch:
+    types: [deploy]
 
 env:
   NEXT_PUBLIC_BASE_PATH: "/bluearchive_calc"
@@ -14,15 +16,20 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.ref_name == 'production' && 'production' || 'develop' }}
+      name: ${{ github.ref_name == 'production' || github.event.client_payload.ref == 'production' && 'production' || 'develop' }}
     permissions:
       id-token: write # IDトークンに対する権限を設定
       contents: read # 必要に応じて他の権限も設定
     steps:
+      - name: echo environment name
+        run: echo ${{ github.ref_name == 'production' || github.event.client_payload.ref == 'production' && 'production' || 'develop' }}
       - name: Checkout code
         uses: actions/checkout@v4
-        # with:
-        #   token: ${{ secrets.ACTIONS_TOKEN }}
+      - name: checkout dispatch
+        if: github.event.client_payload
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.client_payload.ref }}
       - name: setup aws credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
