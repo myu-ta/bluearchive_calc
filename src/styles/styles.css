@@ -1,0 +1,22 @@
+.custom-button {
+  @apply px-4 py-2 sm:py-3 rounded-lg text-base w-1/6 min-w-32 border-gray-200 border-solid border font-semibold shadow-md; /* パディングとフォントサイズを調整 */
+  transform: skewX(-10deg); /* 平行四辺形にするための変形 */
+}
+.custom-icon {
+  @apply px-4 py-3 rounded-lg text-base w-14 sm:w-20 h-20 border-gray-200 border-solid border font-semibold; /* パディングとフォントサイズを調整 */
+}
+
+.custom-button:hover {
+  @apply opacity-50; /* ホバー時の色変更 */
+}
+
+/* numberの時に、右のスピンボタンを消す */
+.custom-number-input::-webkit-outer-spin-button,
+.custom-number-input::-webkit-inner-spin-button {
+  @apply appearance-none;
+  margin: 0;
+}
+
+.custom-number-input[type="number"] {
+  @apply appearance-none;
+}
