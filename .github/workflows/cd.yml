@@ -48,7 +48,7 @@ jobs:
         run: npm run build
         working-directory: src
       - name: Invalidate CloudFront
-        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DIST_ID }} --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DIST_ID }} --paths "/*" > /dev/null
       - name: Deploy to S3
-        run: aws s3 sync --delete out ${{ secrets.S3_BUCKET }}
+        run: aws s3 sync --delete out ${{ secrets.S3_BUCKET }} > /dev/null
         working-directory: src
