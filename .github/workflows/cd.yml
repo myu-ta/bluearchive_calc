@@ -21,18 +21,19 @@ jobs:
       id-token: write # IDトークンに対する権限を設定
       contents: read # 必要に応じて他の権限も設定
     steps:
-      - name: echo environment name
-        run: echo ${{ github.ref_name  }}
-      - name: Skip deployment
-        if: ${{ github.ref_name != 'develop' && github.ref_name != 'production' }}
-        run: exit 0
       - name: Checkout code
+        if: "! github.event.client_payload"
         uses: actions/checkout@v4
       - name: checkout dispatch
         if: github.event.client_payload
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.client_payload.ref }}
+      - name: echo environment name
+        run: echo ${{ github.ref_name  }}
+      - name: Skip deployment
+        if: ${{ github.ref_name != 'develop' && github.ref_name != 'production' }}
+        run: exit 0
       - name: setup aws credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
