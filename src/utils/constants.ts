@@ -21,3 +21,5 @@ export const KEY_NAME_OF_USER_CHARA_DATA: { [key in keyof UserCharaDataItem]: st
   ps: "PS",
   sub: "Sub",
 };
+
+export const NORMAL_AP_COST = 10; // 通常のAP消費
