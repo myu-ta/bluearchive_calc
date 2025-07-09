@@ -1,6 +1,6 @@
-import { userCharaDataAtom } from "@/atoms/userDataAtoms";
+import { selectedCharasAtom, userCharaDataAtom } from "@/atoms/userDataAtoms";
 import { useFetchedDataContext } from "@/features/DataProvider";
-import { UserCharaDataService } from "@/lib/userDataService";
+import { UserCharaDataService, UserCharaSelectService } from "@/lib/userDataService";
 import { CharaName } from "@/types/ba-primitive-types";
 import { ProgressState, UserCharaDataItem } from "@/types/ba-userdata-type";
 import { CharaCardProps } from "@/types/component-props";
@@ -8,11 +8,13 @@ import { splitCharaName } from "@/utils/charaNameUtil";
 import { KEY_NAME_OF_USER_CHARA_DATA } from "@/utils/constants";
 import { useAtom } from "jotai";
 import { useMemo, useState } from "react";
+import { CharaDeleteButton } from "./CharaDeleteButton";
 
 export const CharaCard: React.FC<CharaCardProps> = (props) => {
   const { charaName, inputTargets, isTargetDisplay, imgUrl } = props;
   const { rangeValues } = useFetchedDataContext();
   const [userCharaData, setUserCharaData] = useAtom(userCharaDataAtom);
+  const [selectedCharas, setSelectedCharas] = useAtom(selectedCharasAtom);
   const userCharaDataItem = userCharaData[charaName];
   const [currentUserharaDataItem, setCurrentUserCharaDataItem] = useState(userCharaData[charaName]);
   const [part1, part2] = splitCharaName(charaName);
@@ -80,12 +82,21 @@ export const CharaCard: React.FC<CharaCardProps> = (props) => {
       [charaName]: newUserCharaDataItem,
     });
   };
+
+  const handleDeleteChara = () => {
+    // Only remove from selectedCharas, do not delete from userCharaData
+    const newSelectedCharas = selectedCharas.filter((name) => name !== charaName);
+    setSelectedCharas(newSelectedCharas);
+    new UserCharaSelectService().saveToLocalStorage(newSelectedCharas);
+  };
+
   const colSpan = useMemo(() => {
     return isTargetDisplay ? "grid-cols-3" : "grid-cols-2";
   }, [isTargetDisplay]);
 
   return (
-    <div className="p-2 border shadow-md text-center bg-white m-1 card text-sm sm:text-base">
+    <div className="p-2 border shadow-md text-center bg-white m-1 card text-sm sm:text-base relative">
+      <CharaDeleteButton className="absolute top-1 right-1" onDelete={handleDeleteChara} />
       <div className="flex justify-between items-center">
         <div className="mb-2">
           <div className="w-12 h-12 mx-auto rounded-full overflow-hidden">
