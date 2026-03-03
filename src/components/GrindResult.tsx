@@ -27,6 +27,10 @@ export const GrindResult: React.FC<GrindResultProps> = (props) => {
         <span className="font-bold text-md"> 回</span>
         <span className="font-bold text-md">（消費AP: </span>
         <span className="font-bold text-md text-blue-600">{grindTotalNum * NORMAL_AP_COST}）</span>
+        <p className="text-sm text-red-500">
+          2025/7/22のアップデートに伴いT2~T6のドロップ率が上昇しましたが、7/30現在では未対応です。
+        </p>
+        <p className="text-sm text-red-500">確率が判明次第、対応を予定しております。</p>
       </div>
 
       {displayGrindResults.map((result) => (
