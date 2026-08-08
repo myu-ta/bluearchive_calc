@@ -14,7 +14,7 @@ export const CharaIcon: React.FC<CharaIconProps> = (props) => {
     <div
       onClick={handleSelectChara}
       key={charaName}
-      className="sm:w-20 flex flex-col items-center m-1 sm:m-2 cursor-pointer shadowtextSizeSecond-md border border-slate-200 rounded-md"
+      className="sm:w-20 flex flex-col items-center m-1 sm:m-2 cursor-pointer shadowtextSizeSecond-md border border-base-300 rounded-md"
     >
       <div className="relative group">
         <img src={imgUrl} alt={charaName} />

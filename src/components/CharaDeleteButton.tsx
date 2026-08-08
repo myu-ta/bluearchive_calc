@@ -9,7 +9,7 @@ export const CharaDeleteButton: React.FC<CharaDeleteButtonProps> = ({ onDelete, 
   return (
     <button
       onClick={onDelete}
-      className={` text-black hover:text-black hover:opacity-30 hover:bg-slate-50 rounded-full p-1 transition-all ${className || ""}`}
+      className={` text-base-content hover:opacity-30 hover:bg-base-200 rounded-full p-1 transition-all ${className || ""}`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

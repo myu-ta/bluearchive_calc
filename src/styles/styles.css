@@ -1,9 +1,9 @@
 .custom-button {
-  @apply px-4 py-2 sm:py-3 rounded-lg text-base w-1/6 min-w-32 border-gray-200 border-solid border font-semibold shadow-md; /* パディングとフォントサイズを調整 */
+  @apply px-4 py-2 sm:py-3 rounded-lg text-base w-1/6 min-w-32 border-base-300 border-solid border font-semibold shadow-md; /* パディングとフォントサイズを調整 */
   transform: skewX(-10deg); /* 平行四辺形にするための変形 */
 }
 .custom-icon {
-  @apply px-4 py-3 rounded-lg text-base w-14 sm:w-20 h-20 border-gray-200 border-solid border font-semibold; /* パディングとフォントサイズを調整 */
+  @apply px-4 py-3 rounded-lg text-base w-14 sm:w-20 h-20 border-base-300 border-solid border font-semibold; /* パディングとフォントサイズを調整 */
 }
 
 .custom-button:hover {

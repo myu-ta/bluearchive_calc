@@ -149,9 +149,9 @@ export const CalcResultComponent = () => {
 
   const tabsStyles = useMemo(() => {
     if (currentTab === "equipNumTab") {
-      return ["tab [--tab-border-color:gray] tab-active", "tab [--tab-border-color:gray]"];
+      return ["tab [--tab-border-color:oklch(var(--bc)/0.4)] tab-active", "tab [--tab-border-color:oklch(var(--bc)/0.4)]"];
     } else {
-      return ["tab [--tab-border-color:gray]", "tab [--tab-border-color:gray] tab-active"];
+      return ["tab [--tab-border-color:oklch(var(--bc)/0.4)]", "tab [--tab-border-color:oklch(var(--bc)/0.4)] tab-active"];
     }
   }, [currentTab]);
 
@@ -159,13 +159,13 @@ export const CalcResultComponent = () => {
     <div className="flex flex-col items-center mb-5">
       {selectedCharas.length === 0 ? null : (
         <div className="flex flex-col items-center">
-          <div className="collapse bg-gray-100 collapse-arrow" ref={targetRef}>
+          <div className="collapse bg-base-200 collapse-arrow" ref={targetRef}>
             <input type="checkbox" className="peer" defaultChecked />
-            <div className="collapse-title text-md font-medium text-center peer-checked:bg-slate-50">
+            <div className="collapse-title text-md font-medium text-center peer-checked:bg-base-200">
               周回数計算設定
             </div>
-            <div className="collapse-content peer-checked:bg-slate-50">
-              <p className="mt-2 text-sm sm:text-base font-semibold text-gray-900 bg-blue-100 p-2 rounded-lg shadow-xs text-center">
+            <div className="collapse-content peer-checked:bg-base-200">
+              <p className="mt-2 text-sm sm:text-base font-semibold text-base-content bg-info/60 p-2 rounded-lg shadow-xs text-center">
                 ドロップ倍率
               </p>
               <div className="flex space-x-10">
@@ -176,14 +176,14 @@ export const CalcResultComponent = () => {
                       name="rate"
                       value={rate}
                       checked={magnification === rate}
-                      className="radio radio-sm checked:bg-blue-600"
+                      className="radio radio-sm checked:bg-primary"
                       onChange={() => handleDropRateClick(rate as 1 | 2 | 3)}
                     />
-                    <span className="label-text ml-1 text-gray-800">{rate}倍</span>
+                    <span className="label-text ml-1">{rate}倍</span>
                   </label>
                 ))}
               </div>
-              <p className="mt-3 text-sm sm:text-base font-semibold text-gray-900 bg-red-100 p-2 rounded-lg shadow-xs text-center">
+              <p className="mt-3 text-sm sm:text-base font-semibold text-base-content bg-error/25 p-2 rounded-lg shadow-xs text-center">
                 計算対象
               </p>
               <div className="flex space-x-10">
@@ -194,24 +194,27 @@ export const CalcResultComponent = () => {
                       name="calcType"
                       value={calcTypeOption}
                       checked={calcType === calcTypeOption}
-                      className="radio radio-sm checked:bg-red-600"
+                      className="radio radio-sm checked:bg-secondary"
                       onChange={() => handleCalcTypeClick(calcTypeOption as "通常" | "不足分")}
                     />
-                    <span className="label-text ml-1 text-gray-800">{calcTypeOption}</span>
+                    <span className="label-text ml-1">{calcTypeOption}</span>
                   </label>
                 ))}
               </div>
             </div>
           </div>
           <div className="flex justify-center space-x-8">
-            <button className="custom-button bg-sky-400 text-white mt-3" onClick={calcButtonClick}>
+            <button
+              className="custom-button bg-primary text-primary-content mt-3"
+              onClick={calcButtonClick}
+            >
               計算する
             </button>
           </div>
         </div>
       )}
 
-      <div className="sticky top-8 sm:top-12 bg-white w-full z-30">
+      <div className="sticky top-8 sm:top-12 bg-base-100 w-full z-30">
         <div role="tablist" className="tabs tabs-bordered my-3 w-3/4 mx-auto">
           <a role="tab" className={tabsStyles[0]} onClick={() => setCurrentTab("equipNumTab")}>
             必要数
@@ -250,7 +253,7 @@ export const CalcResultComponent = () => {
               </label>
             </div>
           )}
-          <p className="text-red-500 text-center text-sm sm:text-base">
+          <p className="text-error text-center text-sm sm:text-base">
             ※装備の所持数は、計算結果の必要数をクリックして変更できます
           </p>
           {selectedCharas.length > 0 && (
@@ -329,7 +332,7 @@ export const CalcResultComponent = () => {
         </div>
       )}
       {showCalcErrorMessage && (
-        <div className="fixed bottom-0 left-0 w-full p-3 bg-red-500 text-white text-center z-50 font-semibold text-lg">
+        <div className="fixed bottom-0 left-0 w-full p-3 bg-error text-error-content text-center z-50 font-semibold text-lg">
           表示可能な計算結果がありません
         </div>
       )}

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -13,14 +13,19 @@ export const metadata: Metadata = {
   },
 };
 
+// OSの設定に応じてブラウザのUI(スクロールバー・フォーム部品など)の配色も切り替える
+export const viewport: Viewport = {
+  colorScheme: "light dark",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ja">
+      <body className={`${inter.className} bg-base-100 text-base-content`}>{children}</body>
     </html>
   );
 }
