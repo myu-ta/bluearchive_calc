@@ -106,7 +106,7 @@ export const CharaSelectModal: React.FC<{}> = () => {
   return (
     <div className="flex flex-col items-center">
       <dialog id="my_modal_1" className="modal" ref={charaSelectModalRef}>
-        <div className="modal-box max-w-[90vw] lg:max-w-[70vw] h-[80vh] sm:h-[90vh] flex flex-col items-center bg-slate-50	relative">
+        <div className="modal-box max-w-[90vw] lg:max-w-[70vw] h-[80vh] sm:h-[90vh] flex flex-col items-center bg-base-200 relative">
           <div className="sticky top-0 mb-3 w-11/12 flex flex-wrap items-center">
             <label className="cursor-pointer label justify-normal w-52  mr-3 p-0">
               <span className="label-text mr-1">全装備最大の生徒を非表示</span>
@@ -136,7 +136,7 @@ export const CharaSelectModal: React.FC<{}> = () => {
               onChange={(e) => setCharaDataFilters({ charaName: e.target.value })}
             />
           </div>
-          <div className="overflow-auto w-full h-11/12 bg-white">
+          <div className="overflow-auto w-full h-11/12 bg-base-100">
             <div className="grid grid-cols-4 sm:flex sm:flex-wrap justify-start  pr-0">
               {filteredCharaNames.map((charaName) => (
                 <CharaIcon
@@ -149,20 +149,29 @@ export const CharaSelectModal: React.FC<{}> = () => {
               ))}
             </div>
           </div>
-          <div className="modal-action  flex justify-center  bg-slate-50 w-full">
+          <div className="modal-action  flex justify-center  bg-base-200 w-full">
             <form method="dialog" className="flex justify-around w-full ">
               {/* モーダルの中にボタンがあったら、それはcloseボタンになる https://daisyui.com/components/modal/ */}
-              <button className="custom-button bg-sky-100 text-black" onClick={handleCloseClick}>
+              <button
+                className="custom-button bg-base-200 text-base-content"
+                onClick={handleCloseClick}
+              >
                 閉じる
               </button>
-              <button className="custom-button bg-sky-400" onClick={handleApplyClick}>
+              <button
+                className="custom-button bg-primary text-primary-content"
+                onClick={handleApplyClick}
+              >
                 適用
               </button>
             </form>
           </div>
         </div>
       </dialog>
-      <button className="custom-button bg-yellow-300 text-black" onClick={openCharaSelectModal}>
+      <button
+        className="custom-button bg-warning text-warning-content"
+        onClick={openCharaSelectModal}
+      >
         生徒を選択
       </button>
     </div>

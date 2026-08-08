@@ -6,7 +6,7 @@ export const AppDescription = React.memo(function descriptionJsx() {
       <h1 className="text-3xl">これは何？</h1>
       <p>
         これは、スマートフォン向けゲームアプリである
-        <a href="https://bluearchive.jp/" className="text-blue-600">
+        <a href="https://bluearchive.jp/" className="link link-primary">
           ブルーアーカイブ
         </a>
         の、装備品計算ツールです。
@@ -29,7 +29,7 @@ export const AppDescription = React.memo(function descriptionJsx() {
           周回数は、
           <a
             href="https://ja.wikipedia.org/wiki/%E7%B7%9A%E5%9E%8B%E8%A8%88%E7%94%BB%E6%B3%95"
-            className="text-blue-600"
+            className="link link-primary"
           >
             線形計画法
           </a>
@@ -60,7 +60,7 @@ export const AppDescription = React.memo(function descriptionJsx() {
           となります。(参照:
           <a
             href="https://bluearchive.wikiru.jp/?%E3%82%A2%E3%82%A4%E3%83%86%E3%83%A0%E3%81%AE%E3%83%89%E3%83%AD%E3%83%83%E3%83%97%E7%8E%87#lc4ed08c"
-            className="text-blue-600"
+            className="link link-primary"
           >
             ブルーアーカイブwiki
           </a>
@@ -99,7 +99,7 @@ export const AppDescription = React.memo(function descriptionJsx() {
       <br />
       <p className="text-xl">
         フィードバック・改善提案・不具合などあれば、
-        <a className="text-blue-400" href="https://x.com/nulo_for_vtuber">
+        <a className="link link-primary" href="https://x.com/nulo_for_vtuber">
           作者のTwitter
         </a>
         までお願いします。

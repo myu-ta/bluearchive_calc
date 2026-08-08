@@ -68,7 +68,7 @@ export const CalcEquipTab = () => {
         />
       </label>
       <div className="flex flex-col md:flex-row items-center md:items-center">
-        <p className="text-red-500 text-center md:text-left">
+        <p className="text-error text-center md:text-left">
           ※初回アクセス時の目標Tierは最大値に設定されています
         </p>
         <button className="btn btn-sm btn-warning mt-2 md:mt-0 md:ml-4" onClick={openMaxTierModal}>

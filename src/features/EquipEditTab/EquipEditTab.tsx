@@ -43,12 +43,18 @@ export const EquipEditTab = () => {
 
   return (
     <div className="w-[95vw] sm:w-[70vw] lg:w-[50vw] mx-auto flex flex-col items-center mt-12">
-      <div className="flex justify-center space-x-10 sticky top-8 sm:top-12 bg-white z-10 w-[90vw] pb-4">
-        <button className="custom-button bg-sky-400 w-[8vw] mt-3" onClick={handleClickEdit}>
+      <div className="flex justify-center space-x-10 sticky top-8 sm:top-12 bg-base-100 z-10 w-[90vw] pb-4">
+        <button
+          className="custom-button bg-primary text-primary-content w-[8vw] mt-3"
+          onClick={handleClickEdit}
+        >
           {isEditing ? "戻る" : "編集"}
         </button>
         {isEditing ? (
-          <button className="custom-button bg-yellow-300 w-[8vw] mt-3" onClick={handleClickConfirm}>
+          <button
+            className="custom-button bg-warning text-warning-content w-[8vw] mt-3"
+            onClick={handleClickConfirm}
+          >
             確定
           </button>
         ) : null}

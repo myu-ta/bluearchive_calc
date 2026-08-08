@@ -39,12 +39,12 @@ export const EditCalcResultEquipNum: React.FC<{
 
   return (
     <div className="my-auto col-span-2 w-full text-center text-xs sm:text-base">
-      <p className={currentNum - targetNum >= 0 ? "text-green-500" : "text-red-500"}>
+      <p className={currentNum - targetNum >= 0 ? "text-success" : "text-error"}>
         {currentNum - targetNum}
       </p>
       {isEditing ? (
         <input
-          className="custom-number-input mx-auto w-11/12 text-center"
+          className="custom-number-input mx-auto w-11/12 text-center bg-base-100 text-base-content"
           type="number"
           value={editInput}
           onChange={handleCustomNumberChange}
@@ -54,7 +54,7 @@ export const EditCalcResultEquipNum: React.FC<{
       ) : (
         <p
           onClick={clickNumText}
-          className="bg-black bg-opacity-5 hover:bg-opacity-10 cursor-pointer mx-auto rounded-md"
+          className="bg-base-content/5 hover:bg-base-content/10 cursor-pointer mx-auto rounded-md"
         >
           {currentNum}/{targetNum}
         </p>

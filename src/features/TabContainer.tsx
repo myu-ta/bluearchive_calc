@@ -36,7 +36,7 @@ export const TabContainer: React.FC<TabContainerProps> = () => {
     <div>
       <div
         role="tablist"
-        className="tabs tabs-bordered xs:tabs-xs sm:tabs-lg fixed top-0 w-full z-50"
+        className="tabs tabs-bordered xs:tabs-xs sm:tabs-lg fixed top-0 w-full z-50 bg-base-100"
       >
         {TAB_NAMES.map((tabName, idx) => (
           <a
@@ -44,8 +44,8 @@ export const TabContainer: React.FC<TabContainerProps> = () => {
             role="tab"
             className={
               activeTab === idx
-                ? "tab tab-active bg-blue-400 text-blue-50 text-xs font-bold sm:text-lg"
-                : "tab text-xs sm:text-lg bg-white"
+                ? "tab tab-active bg-primary text-primary-content text-xs font-bold sm:text-lg"
+                : "tab text-xs sm:text-lg bg-base-100"
             }
             onClick={() => setActiveTab(idx)}
           >

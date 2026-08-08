@@ -8,7 +8,7 @@ export const IconName: React.FC<{ charaName: CharaName }> = (props) => {
   // 括弧がない場合、1行
   if (dividedCharaName.length === 1) {
     return (
-      <div className="bg-slate-400 text-xs sm:text-sm md:text-base w-full text-center text-white flex flex-col items-center h-10">
+      <div className="bg-neutral text-xs sm:text-sm md:text-base w-full text-center text-neutral-content flex flex-col items-center h-10">
         <p className="text-sm">{charaName}</p>
       </div>
     );
@@ -20,7 +20,7 @@ export const IconName: React.FC<{ charaName: CharaName }> = (props) => {
   // 2つ目の長さで文字の大きさを変える
   const textSizeSecond = part2.length >= 7 ? "text-[9px]" : "text-[12px]";
   return (
-    <div className="bg-slate-400 text-xs sm:text-sm md:text-base w-full text-center text-white flex flex-col items-center h-10">
+    <div className="bg-neutral text-xs sm:text-sm md:text-base w-full text-center text-neutral-content flex flex-col items-center h-10">
       <p className="icon-text text-sm">{part1}</p>
       <p className={textSizeSecond}>{part2}</p>
     </div>

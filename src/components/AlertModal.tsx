@@ -15,10 +15,10 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
         <div className="modal-action">
           <form method="dialog" className="flex justify-around w-full ">
             {/* モーダルの中にボタンがあったら、それはcloseボタンになる https://daisyui.com/components/modal/ */}
-            <button className="custom-button bg-sky-100 text-black" onClick={handleCancel}>
+            <button className="custom-button bg-base-200 text-base-content" onClick={handleCancel}>
               閉じる
             </button>
-            <button className="custom-button bg-sky-400" onClick={handleOk}>
+            <button className="custom-button bg-primary text-primary-content" onClick={handleOk}>
               適用
             </button>
           </form>
