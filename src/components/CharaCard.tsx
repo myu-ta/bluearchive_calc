@@ -95,7 +95,7 @@ export const CharaCard: React.FC<CharaCardProps> = (props) => {
   }, [isTargetDisplay]);
 
   return (
-    <div className="p-2 border border-base-300 shadow-md text-center bg-base-100 m-1 card text-sm sm:text-base relative">
+    <div className="p-2 border border-base-300 shadow-md text-center surface-card m-1 card text-sm sm:text-base relative">
       <CharaDeleteButton className="absolute top-1 right-1" onDelete={handleDeleteChara} />
       <div className="flex justify-between items-center">
         <div className="mb-2">
@@ -120,21 +120,21 @@ export const CharaCard: React.FC<CharaCardProps> = (props) => {
           <div className="col-span-1 font-bold  my-auto">
             {KEY_NAME_OF_USER_CHARA_DATA[inputTarget]}
           </div>
-          <div className="col-span-1 bg-base-200 p-1 rounded">
+          <div className="col-span-1 surface-input p-1 rounded">
             <input
               value={currentUserharaDataItem[inputTarget].current}
               type="text"
-              className="w-11/12 text-center px-0   lg:text-lg m-auto bg-base-200"
+              className="w-11/12 text-center px-0   lg:text-lg m-auto bg-transparent"
               onChange={(e) => handleNumChange(e, inputTarget, "current")}
               onBlur={() => handleOnBlur(charaName, inputTarget)}
             />
           </div>
           {isTargetDisplay && (
-            <div className="col-span-1 bg-base-300 p-1 rounded">
+            <div className="col-span-1 surface-input-strong p-1 rounded">
               <input
                 value={currentUserharaDataItem[inputTarget].target}
                 type="text"
-                className="w-11/12 text-center px-0    lg:text-lg m-auto bg-base-300"
+                className="w-11/12 text-center px-0    lg:text-lg m-auto bg-transparent"
                 onChange={(e) => handleNumChange(e, inputTarget, "target")}
                 onBlur={() => handleOnBlur(charaName, inputTarget)}
               />

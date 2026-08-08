@@ -2,8 +2,9 @@ import type { Config } from "tailwindcss";
 import daisyui from "daisyui";
 
 const config: Config = {
-  // daisyUIがhtmlに付与するdata-themeに合わせてTailwindのdark:も切り替える
-  darkMode: ["selector", '[data-theme="dark"]'],
+  // 注意: OS設定追従(prefers-color-scheme)で運用しているためdata-themeは付与されない。
+  // よってTailwindの dark: バリアントは使えない。テーマ差はdaisyUIのbase-*か、
+  // styles.cssのsurface-*クラス(prefers-color-schemeで切り替え)で表現すること。
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -43,6 +44,12 @@ const config: Config = {
       {
         dark: {
           ...require("daisyui/src/theming/themes")["dark"],
+          // daisyUI標準のdarkはbase-200/300がbase-100より「暗く」なるため、
+          // カードや入力欄が背景に沈んで見えなくなる。
+          // 手前の面ほど明るくなるよう、base-200/300を明るい方向に定義し直す。
+          "base-100": "#1d232a", // ページ背景(最も奥)
+          "base-200": "#252c35", // カードなど1段手前の面
+          "base-300": "#39424d", // 入力欄など、さらに手前・強調したい面
           primary: "#38bdf8",
           "primary-content": "#0b1220",
           secondary: "#f87171",

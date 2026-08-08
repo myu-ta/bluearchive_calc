@@ -10,6 +10,34 @@
   @apply opacity-50; /* ホバー時の色変更 */
 }
 
+/*
+ * 面の重なりを表すクラス。
+ * ライトでは「手前ほど暗い(へこんで見える)」、ダークでは「手前ほど明るい(浮いて見える)」
+ * のが自然なため、明暗の向きがテーマで逆になる。daisyUIのbase-*だけでは表現できないので
+ * ここで定義する。切り替え条件はdaisyUIのテーマ適用と同じprefers-color-schemeに合わせる。
+ */
+.surface-card {
+  @apply bg-base-100; /* ライト: 白いカード */
+}
+.surface-input {
+  @apply bg-base-200; /* ライト: カードよりわずかに暗い入力欄 */
+}
+.surface-input-strong {
+  @apply bg-base-300; /* ライト: さらに暗い(目標欄) */
+}
+
+@media (prefers-color-scheme: dark) {
+  .surface-card {
+    @apply bg-base-200; /* ダーク: 背景から1段持ち上げる */
+  }
+  .surface-input {
+    @apply bg-base-content/10; /* ダーク: カードの上にさらに重ねる */
+  }
+  .surface-input-strong {
+    @apply bg-base-content/20;
+  }
+}
+
 /* numberの時に、右のスピンボタンを消す */
 .custom-number-input::-webkit-outer-spin-button,
 .custom-number-input::-webkit-inner-spin-button {
