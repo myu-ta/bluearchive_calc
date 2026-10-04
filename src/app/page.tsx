@@ -18,7 +18,7 @@ export async function generateMetadata() {
       url: "https://bluearchive-calc.nu-lo.com/",
       images: [
         {
-          url: "https://nu-lo.com/static/favicon.ico",
+          url: "https://assets.nu-lo.com/favicon.ico",
           width: 600,
           height: 600,
         },
@@ -29,7 +29,7 @@ export async function generateMetadata() {
       card: "summary",
       title: title,
       description: description,
-      images: ["https://nu-lo.com/static/favicon.ico"],
+      images: ["https://assets.nu-lo.com/favicon.ico"],
     },
   };
 }
