@@ -15,7 +15,7 @@ export async function generateMetadata() {
     openGraph: {
       title: title,
       description: description,
-      url: "https://nu-lo.com/bluearchive_calc/",
+      url: "https://bluearchive-calc.nu-lo.com/",
       images: [
         {
           url: "https://nu-lo.com/static/favicon.ico",
