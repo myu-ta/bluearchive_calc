@@ -9,7 +9,7 @@ on:
     types: [deploy]
 
 env:
-  NEXT_PUBLIC_BASE_PATH: "/bluearchive_calc"
+  NEXT_PUBLIC_BASE_PATH: ""
   API_URL: ${{ secrets.API_URL }}
 
 jobs:

@@ -7,9 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "ブルアカ装備品計算ツール",
   description: "ブルアカで必要な装備品の必要数を計算します。",
-  metadataBase: new URL("https://nu-lo.com"),
+  metadataBase: new URL("https://bluearchive-calc.nu-lo.com"),
   alternates: {
-    canonical: "/bluearchive_calc/",
+    canonical: "/",
   },
 };
 
